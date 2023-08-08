@@ -1,0 +1,29 @@
+{
+    "name": "booosta/graph2",
+    "description": "Line graph for Booosta PHP Framework",
+    "license": "LGPL-3.0-only",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "booosta\\graph1\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Peter Buzanits",
+            "email": "peter@icb.at"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0.0",
+        "booosta/webapp": "dev-master",
+        "almasaeed2010/adminlte":"^3.2"
+    }
+}
