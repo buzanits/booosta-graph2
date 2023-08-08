@@ -1,11 +1,11 @@
 {
     "name": "booosta/graph2",
-    "description": "Line graph for Booosta PHP Framework",
+    "description": "Multiple graphs for Booosta PHP Framework",
     "license": "LGPL-3.0-only",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "booosta\\graph1\\": "src"
+            "booosta\\graph2\\": "src"
         }
     },
     "authors": [
