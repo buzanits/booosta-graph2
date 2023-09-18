@@ -6,6 +6,9 @@ use booosta\graph2\Graph2;
 
 class Line extends Graph2
 {
+  protected $mode = 'number';
+  protected $minval, $maxval;
+
 	protected $default_options =
   [
     'grid' => ['hoverable' => 'true', 'borderColor' => '#f3f3f3'],
@@ -21,12 +24,6 @@ class Line extends Graph2
   {
     $this->set_option('series', 'points', ['show' => 'true']);
     $this->set_option('series', 'lines', ['show' => 'true']);
-  }
-
-  public function set_option($name, $value, $value1 = null)
-  {
-    if ($value1 === null) $this->options[$name] = $value;
-    else $this->options[$name][$value] = $value1;
   }
 
 	public function get_js()
@@ -122,32 +119,6 @@ class Line extends Graph2
     else :
       return "\$(document).ready(function(){ \$.plot('#$this->id', [ $lines ],\n $options ); $toolcode});";
     endif;
-  }
-
-	protected function get_options()
-  {
-    $options = array_replace_recursive($this->default_options, $this->options);
-
-    #\booosta\debug($options);
-    #\booosta\debug($this->get_suboptions($options));
-
-    $result = $this->get_suboptions($options);
-
-    return $result;
-  }
-
-  protected function get_suboptions($options)
-  {
-    if(is_array($options)):
-      $result = '';
-      foreach ($options as $name => $opt) $result .= " $name: " . $this->get_suboptions($opt) . ", ";
-      if (is_array($this->colors)) $result .= 'colors: ["' . implode('", "', $this->colors) . '"], ';
-
-      return " { $result } ";
-    endif;
-
-    return "'$options'";
-    #return is_numeric($options) ? $options : "'$options'";
   }
 
   protected function convert_x_timestamp()
