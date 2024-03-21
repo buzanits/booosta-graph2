@@ -13,6 +13,10 @@ class Graph2 extends \booosta\ui\UI
   protected $data;
   protected $height, $width;
   protected $options = [], $colors = [], $labels, $tooltip = false;
+  protected $hide_hover = false;
+  protected $hide_label = false;
+  protected $stepsize = 1;
+  protected $unit;
 
 
 	public function __construct($name, $data = null, $title = null, $height = 300, $width = 400)
@@ -46,6 +50,11 @@ class Graph2 extends \booosta\ui\UI
   public function set_tooltip($val = true) { $this->tooltip = $val; }
   public function set_minval($val = true) { $this->minval = $val; }
   public function set_maxval($val = true) { $this->maxval = $val; }
+  public function hide_hover($val = true) { $this->hide_hover = $val; }
+  public function hide_label($val = true) { $this->hide_label = $val; }
+  public function set_stepsize($val = true) { $this->stepsize = $val; }
+  public function set_unit($val = true) { $this->unit = $val; }
+
 
 	public function add_data($data)
   {
