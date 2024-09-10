@@ -9,13 +9,13 @@ class Line extends Graph2
   protected $mode = 'number';
   protected $minval, $maxval;
 
-	protected $default_options =
+  protected $default_options =
   [
     'grid' => ['hoverable' => 'true', 'borderColor' => '#f3f3f3'],
     'series' => ['shadowsize' => '0']
   ];
 
-	public function show_legend()
+  public function show_legend()
   {
     $this->set_option('legend', 'show', 'true');
   }
@@ -26,7 +26,7 @@ class Line extends Graph2
     $this->set_option('series', 'lines', ['show' => 'true']);
   }
 
-	public function get_js()
+  public function get_js()
   {
     if (!is_array($this->data)) return '';
     $linearr = [];
@@ -102,7 +102,8 @@ class Line extends Graph2
       else $tooltext = $this->tooltip;
 
       $tooltext = "'$tooltext'";
-      $tooltext = str_replace(['{label}', '{x}', '{y}'], ["' + item.series.label + '", "' + x + '", "' + y + '"], $tooltext);
+      $tooltext = str_replace(['{label}', '{x}', '{y}'], ["' + item.series.label + '", "' + x + '", "' + y +
+      '"], $tooltext);
 
       $libpath = 'lib/modules/graph1';
       $tpl = file_get_contents("$libpath/tooltip.tpl");

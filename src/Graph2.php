@@ -19,7 +19,7 @@ class Graph2 extends \booosta\ui\UI
   protected $unit;
 
 
-	public function __construct($name, $data = null, $title = null, $height = 300, $width = 400)
+  public function __construct($name, $data = null, $title = null, $height = 300, $width = 400)
   {
     parent::__construct();
 
@@ -40,7 +40,7 @@ class Graph2 extends \booosta\ui\UI
     endif;
   }
 
-	public function set_title($title) { $this->title = $title; }
+  public function set_title($title) { $this->title = $title; }
   public function set_data($data) { $this->data = $data; }
   public function set_height($val) { $this->height = $val; }
   public function set_width($val) { $this->width = $val; }
@@ -56,7 +56,7 @@ class Graph2 extends \booosta\ui\UI
   public function set_unit($val = true) { $this->unit = $val; }
 
 
-	public function add_data($data)
+  public function add_data($data)
   {
     if (is_array($data)) $this->data = array_merge($this->data, $data);
     else $this->data[] = $data;
@@ -68,7 +68,7 @@ class Graph2 extends \booosta\ui\UI
     else $this->options[$name][$value] = $value1;
   }
 
-	protected function get_options()
+  protected function get_options()
   {
     $options = array_replace_recursive($this->default_options, $this->options);
 
@@ -101,14 +101,14 @@ class Graph2 extends \booosta\ui\UI
     return "<div id='$this->id' style='height: {$this->height}px;'></div>";
   }
 
-	protected function random_color()
-	{
-		$r = random_int(0, 255);
-		$g = random_int(0, 255);
-		$b = random_int(0, 255);
+  protected function random_color()
+  {
+    $r = random_int(0, 255);
+    $g = random_int(0, 255);
+    $b = random_int(0, 255);
 
-		return sprintf("#%02x%02x%02x", $r, $g, $b);
-	}
+    return sprintf("#%02x%02x%02x", $r, $g, $b);
+  }
 
   public function get_js() {}   // to override
 }
