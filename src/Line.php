@@ -8,6 +8,9 @@ class Line extends Graph2
 {
   protected $mode = 'number';
   protected $minval, $maxval;
+  protected $locale = 'en-US';
+
+  protected set_locale($locale) { $this->locale = $locale; }
 
   protected $default_options =
   [
@@ -98,7 +101,7 @@ class Line extends Graph2
 
     // show tooltip
     if ($this->tooltip !== false) :
-      if ($this->tooltip === true) $tooltext = "{label} von {x} = {y}";
+      if ($this->tooltip === true) $tooltext = "{label} of {x} = {y}";
       else $tooltext = $this->tooltip;
 
       $tooltext = "'$tooltext'";
@@ -109,17 +112,13 @@ class Line extends Graph2
       $tpl = file_get_contents("$libpath/tooltip.tpl");
 
       $calculations = '';
-      if (in_array($this->mode, ['date', 'time', 'datetime'])) $calculations = "x = new Date(x*1000).toLocaleString('de-DE', {month: '2-digit', day: '2-digit', hour: '2-digit', minute:'2-digit'}) ";
+      if (in_array($this->mode, ['date', 'time', 'datetime'])) $calculations = "x = new Date(x*1000).toLocaleString('$this->locale', {month: '2-digit', day: '2-digit', hour: '2-digit', minute:'2-digit'}) ";
       $toolcode = str_replace(['{id}', '{tooltext}', '{calculations}'], [$this->id, $tooltext, $calculations], $tpl);
     else :
       $toolcode = '';
     endif;
 
-    if (is_object($this->topobj) && is_a($this->topobj, '\booosta\webapp\webapp')) :
-      $this->topobj->add_jquery_ready("\$.plot('#$this->id', [ $lines ],\n $options); $toolcode");
-    else :
-      return "\$(document).ready(function(){ \$.plot('#$this->id', [ $lines ],\n $options ); $toolcode});";
-    endif;
+    return $this->get_ready_code("\$.plot('#$this->id', [ $lines ],\n $options); $toolcode");
   }
 
   protected function convert_x_timestamp()

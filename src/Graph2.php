@@ -12,19 +12,17 @@ class Graph2 extends \booosta\ui\UI
   protected $title;
   protected $data;
   protected $height, $width;
-  protected $options = [], $colors = [], $labels, $tooltip = false;
+  protected $options = [], $default_options = [], $colors = [], $labels, $tooltip = false;
   protected $hide_hover = false;
   protected $hide_label = false;
   protected $stepsize = 1;
   protected $unit;
 
 
-  public function __construct($name, $data = null, $title = null, $height = 300, $width = 400)
+  public function __construct($name, $data = [], $title = null, $height = 300, $width = 400)
   {
-    parent::__construct();
+    parent::__construct("graph2_$name");
 
-    $this->id = "graph2_$name";
-    if($data === null) $data = [];
     $this->data = $data;
     $this->title = $title;
     $this->height = $height;
@@ -48,11 +46,11 @@ class Graph2 extends \booosta\ui\UI
   public function set_labels($val) { $this->labels = $val; }
   public function set_mode($val) { $this->mode = $val; }
   public function set_tooltip($val = true) { $this->tooltip = $val; }
-  public function set_minval($val = true) { $this->minval = $val; }
-  public function set_maxval($val = true) { $this->maxval = $val; }
+  public function set_minval($val = null) { $this->minval = $val; }
+  public function set_maxval($val = null) { $this->maxval = $val; }
   public function hide_hover($val = true) { $this->hide_hover = $val; }
   public function hide_label($val = true) { $this->hide_label = $val; }
-  public function set_stepsize($val = true) { $this->stepsize = $val; }
+  public function set_stepsize($val = 1) { $this->stepsize = $val; }
   public function set_unit($val = true) { $this->unit = $val; }
 
 
@@ -84,7 +82,9 @@ class Graph2 extends \booosta\ui\UI
   {
     if(is_array($options)):
       $result = '';
+
       foreach ($options as $name => $opt) $result .= " $name: " . $this->get_suboptions($opt) . ", ";
+
       if (is_array($this->colors)) $result .= 'colors: ["' . implode('", "', $this->colors) . '"], ';
 
       return " { $result } ";
