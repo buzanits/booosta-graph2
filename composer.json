@@ -23,7 +23,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=8.0.0",
-        "booosta/webapp": "^4.0",
+        "booosta/base": "^4.0",
         "almasaeed2010/adminlte":"^3.2"
     }
 }
