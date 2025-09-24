@@ -10,7 +10,7 @@ class Line extends Graph2
   protected $minval, $maxval;
   protected $locale = 'en-US';
 
-  protected set_locale($locale) { $this->locale = $locale; }
+  protected function set_locale($locale) { $this->locale = $locale; }
 
   protected $default_options =
   [
@@ -66,6 +66,8 @@ class Line extends Graph2
     if(is_numeric($this->minval) && !is_numeric($this->maxval)) $calc_maxval = true;
     elseif(!is_numeric($this->minval) && is_numeric($this->maxval)) $calc_minval = true;
 
+    if(!is_array($this->data[0][0])) $this->data = [$this->data];  // only two dimensions when only one line present
+ 
     foreach ($this->data as $index => $line) :
       if (!is_array($line)) continue;
       $pointarr = [];

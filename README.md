@@ -27,9 +27,14 @@ In your scripts you use the module:
 
 ```
 # [...]
-$map = $this->makeInstance("\\booosta\\graph2\\Line", $data, $title, $height, $width);
-$html = $map->get_html();
+$line = $this->makeInstance("\\booosta\\graph2\\Line", $name, $data, $title, $height, $width);
+$html = $line->get_html();
 ```
+`$name` is a unique name for the graph object. 
+`$data` is an array in the form `[[x1,y1], [x2, y2] ... ]` holding the coordinates for the line graph. For
+showing several lines, make the array three dimensional: `[[[x1,y1], [x2, y2] ...], [[x1,y1], [x2, y2] ... ]]`
+`$title` is the title displayed on the graph
+`$height` and `$witdh` are the size of the whole graph in pixels
 
 ## Usage in standalone PHP scripts
 
@@ -41,8 +46,27 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use \booosta\graph2\Line;
 
-$graph = new Line($data, $title, $height, $width);
-print $graph->loadHTML();
+$line = new Line($name, $data, $title, $height, $width);
+print $line->loadHTML();
 ```
+The meaning of the parameters match those described above.
+
+## Additional functions for all Graph2 Types
+
+```
+$graph->set_title($title);  # set the graph title
+$graph->set_data($data);    # set the array with the data (explanation above)
+$graph->set_height($val);   # set the height of the graphic
+$graph->set_width($val);    # set the width of the graphic
+$graph->set_colors($val);   # set the colors; an array with the colors of the data lines (#RRGGBB)
+$graph->set_labels($val);   # set the labels for the data; array with one entry per data line
+$graph->set_mode($val);     # set the mode of the graph ("date", "datetime", "time" or null for standard data)
+$graph->set_tooltip($val);  # set the tooltip of the data lines (explanation beneath)
+$graph->set_minval($val);   # set the minimum value on the graph
+$graph->set_maxval($val);   # set the maximum value on the graph
+$graph->hide_hover($val);   # hide any hover functions (boolean)
+$graph->hide_label($val);   # hide any labels on data (boolean)
+$graph->set_stepsize($val); # set the size of the steps displayed on the graph
+$graph->set_unit($val);     # set the unit, which is used in some graph types
 
 **This README is ongoing work**

@@ -18,6 +18,8 @@ class Graph2 extends \booosta\ui\UI
   protected $stepsize = 1;
   protected $unit;
 
+  protected $needs_jquery = true;
+
 
   public function __construct($name, $data = [], $title = null, $height = 300, $width = 400)
   {
