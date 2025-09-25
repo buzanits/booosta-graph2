@@ -68,5 +68,20 @@ $graph->hide_hover($val);   # hide any hover functions (boolean)
 $graph->hide_label($val);   # hide any labels on data (boolean)
 $graph->set_stepsize($val); # set the size of the steps displayed on the graph
 $graph->set_unit($val);     # set the unit, which is used in some graph types
+```
+
+`set_data($data)` takes an array with the data to display. It can be two dimensional to display one data line
+or three dimensional to display several data lines. The data structure is described above.
+
+`set_tooltip($val)` takes a string or a boolean. With a string the tooltip will be this string with the
+placeholders `{label}` for the datas label, `{x}` for the value of the x axis and corresponding `{y}`.
+If the parameter is a boolean `true`, the tooltip shows `"{label} of {x} = {y}"`. If it is false, no
+tooltip is shown.
+
+```
+$graph->add_data($data);    # adds an additional data line which must be a two dimensional array (see above)
+$graph->set_option($name, $value, $value1);   # set an option; options depend on the type of graph you draw
+```
+
 
 **This README is ongoing work**
