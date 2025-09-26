@@ -83,5 +83,91 @@ $graph->add_data($data);    # adds an additional data line which must be a two d
 $graph->set_option($name, $value, $value1);   # set an option; options depend on the type of graph you draw
 ```
 
+## Type "Line"
 
-**This README is ongoing work**
+_Line_ shows a line chart. It is possible to draw several lines in one chart. Line is instantiated as described
+above.
+
+### Additional functions for Type Line
+
+```
+$graph->show_legend();     # show a legend beside the chart
+$graph->show_points();     # show a visible point at each data point
+```
+
+## Type "Bar"
+
+_Bar_ shows a bar chart.
+
+
+### Instantiation in Booosta framework
+
+```
+$bar = $this->makeInstance("\\booosta\\graph2\\Bar", $name, $data, $title, $height, $width);
+$html = $bar->get_html();
+```
+
+### Instantiation as standalone class
+
+```
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use \booosta\graph2\Bar;
+
+$bar = new Bar($name, $data, $title, $height, $width);
+print $bar->loadHTML();
+```
+
+## Type "Bar2"
+
+_Bar2_ shows an enhanced bar chart.
+
+
+### Instantiation in Booosta framework
+
+```
+$bar = $this->makeInstance("\\booosta\\graph2\\Bar2", $name, $data, $title, $height, $width);
+$html = $bar->get_html();
+```
+
+### Instantiation as standalone class
+
+```
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use \booosta\graph2\Bar2;
+
+$bar = new Bar2($name, $data, $title, $height, $width);
+print $bar->loadHTML();
+```
+
+### Additional functions
+
+```
+$bar->y_labels($val);   # An array that holds the values of the y axis. Indexed with the value. Example: [0 => 'zero', 1 => 'one', 2 => 'two']
+```
+
+## Type "Donut"
+
+_Donut_ shows a donut style chart.
+
+### Instantiation in Booosta framework
+
+```
+$donut = $this->makeInstance("\\booosta\\graph2\\Donut", $name, $data, $title, $height, $width);
+$html = $donut->get_html();
+```
+
+### Instantiation as standalone class
+
+```
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use \booosta\graph2\Donut;
+
+$donut = new Donut($name, $data, $title, $height, $width);
+print $donut->loadHTML();
+```
