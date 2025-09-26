@@ -1,6 +1,6 @@
-# Line graph for Booosta PHP Framework
+# Data charts for Booosta PHP Framework
 
-This module provides multiple graphs for Booosta PHP Framework
+This module provides multiple charts for Booosta PHP Framework
 
 Booosta allows to develop PHP web applications quick. It is mainly designed for small web applications.
 It does not provide a strict MVC distinction. Although the MVC concepts influence the framework. Templates,
