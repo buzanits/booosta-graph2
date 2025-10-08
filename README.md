@@ -99,6 +99,12 @@ $graph->show_points();     # show a visible point at each data point
 
 _Bar_ shows a bar chart.
 
+`$data` is in a different format:
+```
+$data = ['First' => 4, 'Second' => 1, 'Third' => 3];
+```
+This shows a chart with three bars with each bar named after the index on the x axis.
+
 
 ### Instantiation in Booosta framework
 
@@ -121,7 +127,7 @@ print $bar->loadHTML();
 
 ## Type "Bar2"
 
-_Bar2_ shows an enhanced bar chart.
+_Bar2_ shows an enhanced bar chart. The data is formatted like in the _Bar_ type.
 
 
 ### Instantiation in Booosta framework
